@@ -1,0 +1,134 @@
+.section4 .title h1{
+    font-size: 2.5rem;
+    color: #dc3545;
+    text-align: center;
+}
+.somusers{
+  padding-left: 250px;
+  padding-right: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content:left;
+  gap: 50px;
+}
+.someuser{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  height: fit-content;
+  transition: .5s;
+}
+.someuser p{
+  margin-bottom: 9px;
+}
+.someuser .title{
+  color: #C90000;
+  font-size: 22px;
+  font-weight: bold;
+}
+.someuser .inofsreq{
+  display: flex;
+  gap: 50px;
+  color: #957178;
+  transition: .5s;
+}
+.someuser .despart{
+  color: #957178;
+  transition: .5s;
+}
+.someuser a{
+  position: absolute;
+  right: 0;
+  background-color: #F4F0F0;
+  width: 183px;
+  border-radius: 10px;
+  height: 44px;
+  margin-right: 5px;
+  color: black;
+  font-weight: 800;
+  font-size: 20px;
+  transition: .5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.someuser .test{
+  display: none;
+}
+.someuser .spanshit{
+  color: #957178;
+  transition: .3s;
+}
+
+.someuser:hover {
+padding: 15px;
+background-color: #F4F0EF;
+border-radius: 14px;
+}
+.someuser:hover a{
+  background-color: #C90000;
+  color: #FFFFFF  ;
+}
+.someuser:hover .inofsreq{
+  color: black;
+}
+.someuser:hover .despart{
+  color: black;
+}
+.someuser:hover .spanshit{
+  font-weight: bold;
+  color: black;
+}
+
+
+@media (max-width:600px) {
+    .section4 .title h1{
+      font-size: 2rem;
+    }
+  }
+@media (max-width:1186px) {
+  .somusers{
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
+@media (max-width:867px) {
+  .somusers{
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+@media (max-width:770px) {
+  .somusers{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+@media (max-width:702px) {
+  .somusers{
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  .someuser .inofsreq{
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+}
+@media (max-width:489px) {
+  .someuser a{
+    display: none;
+  }
+  .someuser .test{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+}

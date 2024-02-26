@@ -1,0 +1,59 @@
+.nav{
+    padding-left: 200px;
+    padding-right: 200px;
+}
+.bloodbuttres,.emailres{
+    box-shadow: 0 8px 28px #dc384873;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    font-weight: bold;
+    font-size: 19px;
+    height: 45px;
+    text-align: center;
+}
+.emailres{
+    box-shadow: 0 8px 28px #dc384873;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    font-weight: bold;
+    font-size: 19px;
+    height: 45px;
+    text-align: center;
+}
+.bloodbutt,.email{
+    box-shadow: 0 8px 28px #dc384873;
+}
+.navres{
+    margin-top: -19px;
+}
+@media (max-width:1215px) {
+    .nav{
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+}
+@media (max-width:1067px) {
+    .nav{
+        padding-left: 75px;
+        padding-right: 75px;
+    }
+}
+@media (max-width:600px) {
+    .nav{
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+nav .links a:hover{
+    color: rgb(2, 1, 1);
+}
+/* 1216 1318 */
+/* @media (min-width:1216px) and (max-width:1318px) {
+    .email{
+        max-width: 100px;
+    }
+} */

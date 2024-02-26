@@ -1,0 +1,129 @@
+.login {
+    margin-top: 80px;
+}
+
+.login p {
+    text-align: center;
+    padding: 15px;
+    font-size: 1.5em;
+    color: #155724;
+
+    background-color: #d4edda;
+
+    border: 1px solid #d4edda;
+    box-shadow: 0 .5rem 1rem #00000026 !important;
+
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+
+
+.login form {
+    width: 500px;
+    margin: 0 auto;
+    height: fit-content;
+    padding: 30px;
+    /* Adjusted padding */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 .5rem 1rem #00000026 !important;
+}
+
+
+.login p {
+    text-align: center;
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.login label {
+
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.2em;
+    color: #333;
+}
+.login .error{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    opacity: 0.5;
+    color: white;
+    width: 100%;
+    height: 50px;
+    background-color: #dc3545;
+}
+
+
+.login input {
+
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+}
+
+
+.login input:focus {
+    outline: none;
+    border: 3px solid red;
+    box-shadow: 0 0 10px red;
+    transition: .1s;
+
+}
+
+
+
+
+
+.login a {
+
+    color: red;
+    font-size: 1.5em;
+}
+
+
+
+
+.login input[type="submit"] {
+    background-color: #dc3545;
+    width: 100%;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1.3em;
+    box-shadow: 0 8px 28px #dc384873;
+
+}
+
+.login input[type="submit"]:hover {
+
+    background-color: #bb2d3b;
+    transition: 0.3s;
+
+}
+
+
+.login span {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    color: #333;
+    font-size: 1em;
+}
+@media (max-width:500px) {
+    .login form{
+        width: 100%;
+        height: 100%;
+    }
+}
+.login a{
+    font-size: 20px;
+}

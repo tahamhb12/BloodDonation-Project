@@ -1,0 +1,20 @@
+.notfound{
+    padding-top: 130px;
+    height: 700px;
+}
+.notfoundd{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.notfound h1{
+    margin-top: 50px;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    color: #dc3545;
+}
+.notfoundimg{
+    width: 400px;
+}

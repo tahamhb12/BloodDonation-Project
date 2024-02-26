@@ -1,0 +1,90 @@
+.demands{
+    padding-top: 100px;
+    height: 100%;
+}
+.demands h1{
+    text-align: center;
+    font-size: 50px;
+}
+.demands .requestslist{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.demands .requestlist{
+    box-shadow: 0px 0px 13px 0px rgba(0,0,0,0.75);
+    width: 1500px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 70px;
+    border-radius: 15px;
+    font-size: 25px;
+}
+.demands .requestlist i{
+    color: red;
+}
+.demands .groupe, .demands .ville{
+    width: 250px;
+}
+.demands .filter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.clearbutt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.clearbutt button{
+/*     background-color: white;
+    width: fit-content;
+    padding:10px 20px;
+    border-radius: 8px;
+    color: red;
+    font-weight: bold;
+    text-transform: capitalize;
+    transition: .2s;
+    border: 2px solid red; */
+    color: #656565;
+    transition: .5s;
+}
+.demands select{
+    margin-left: 15px;
+    margin-right:15px;
+}
+.clearbutt button:hover{
+/*     background-color: red;
+    color: white; */
+    color: black;
+    text-decoration: underline;
+}
+.demands .filter select:focus{
+    border: 2px solid black;
+    box-shadow: none;
+}
+.demands .notfound{
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+}
+
+@media (max-width:1020px) {
+    .demands .groupe, .demands .ville{
+        width: 100px;
+    }
+}
+@media (max-width:604px) {
+    .demands .filter{
+        display: flex;
+        flex-direction: column;
+    }
+    .demands .groupe, .demands .ville{
+        width: 250px;
+    }
+}
