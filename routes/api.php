@@ -23,6 +23,8 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 Route::get('/users', [RegisteredUserController::class, 'index'])->name('users.index');
 Route::delete('/users/{id}', [RegisteredUserController::class, 'destroy'])->name('users.destroy');
 Route::put('/user/update', [RegisteredUserController::class, 'update'])->name('user.update');
+Route::put('/users/password', [RegisteredUserController::class, 'updatePasswordByEmail']);
+
 
 
 Route::apiResource('/bloodrequest', bloodRequestController::class);

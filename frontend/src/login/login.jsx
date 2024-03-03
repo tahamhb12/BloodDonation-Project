@@ -28,7 +28,7 @@ export function Login() {
                 <input type="password" value={password} placeholder="Mot de passe" onChange={(e)=>setpassword(e.target.value)}/> <br />
                 {loginerrors.password && 
                 <p className="error">{loginerrors.password[0]}</p>}
-                <a href="./">Mot de passe oublié ?</a> <br /> <br />
+                <Link to="/forget_password">Mot de passe oublié ?</Link> <br /> <br />
                 <input type="submit" value={"Se connecter"} /> <br />
                 <span>Vous n'avez pas de compte ? <Link to="/registre">Je m'inscris</Link></span>
 

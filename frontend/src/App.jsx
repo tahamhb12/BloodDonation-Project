@@ -20,9 +20,18 @@ import Blood from './bloodrequest';
 import Profile from './profile/profile';
 import Admin from './admin/admin';
 import Adminlayout from './layouts/adminlayout';
+import Forgot_pass from './forget_password/forgot_pass';
+import Verifyemail from './verify email/verifyemail';
 
 const App = () => {
     const [show, setShow] = useState(false);
+    const [bloodtype,setbloodtype] = useState("")
+    const [city,setcity] = useState("")
+    const [phonenumber,setphonenumber] = useState("")
+    const [email,setemail] = useState("")
+    const [password,setpassword] = useState("")
+    const [password_confirmation,setpassword_confirmation] = useState("")
+
     
     const ScrollToTop = () => {
         useEffect(() => {
@@ -50,8 +59,26 @@ const App = () => {
                     </>}>
                 </Route>    
                 <Route element={<Guestlayout/>}>
-                    <Route path='/registre' exact element={<><Registre/><ScrollToTop /></>}></Route>
+                    <Route path='/registre' exact element={<><Registre 
+                        bloodtype={bloodtype} setbloodtype={setbloodtype}
+                        city={city} setcity={setcity}
+                        phonenumber={phonenumber} setphonenumber={setphonenumber}
+                        email={email} setemail={setemail}
+                        password={password} setpassword={setpassword}
+                        password_confirmation={password_confirmation} setpassword_confirmation={setpassword_confirmation}/>
+                        <ScrollToTop /></>}>
+                    </Route>
                     <Route path='/login' element={<><Login/><ScrollToTop /></>}></Route>
+                    <Route path='/forget_password' element={<><Forgot_pass/><ScrollToTop /></>}></Route>
+                    <Route path='/verify_email' element={<><Verifyemail 
+                        bloodtype={bloodtype} setbloodtype={setbloodtype}
+                        city={city} setcity={setcity}
+                        phonenumber={phonenumber} setphonenumber={setphonenumber}
+                        email={email} setemail={setemail}
+                        password={password} setpassword={setpassword}
+                        password_confirmation={password_confirmation} setpassword_confirmation={setpassword_confirmation}/>
+                        <ScrollToTop /></>}>
+                    </Route>
                 </Route>
                 <Route element={<Authlayout/>}>
                     <Route path='/demands' element={<><BloodDemands/><ScrollToTop /></>}></Route>

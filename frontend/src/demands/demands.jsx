@@ -2,6 +2,10 @@ import "./demands.css";
 import { useEffect, useState } from "react";
 import axios from "../api/axios";
 import useAuthContext from "../context/AuthContext";
+import emailjs from '@emailjs/browser';
+import Swal from 'sweetalert2'
+
+
 
 const BloodDemands = () => {
     let [list, setList] = useState([]);
@@ -9,6 +13,31 @@ const BloodDemands = () => {
     const [sexe, setsexe] = useState("");
     const [ville, setville] = useState("");
     const { user } = useAuthContext();
+
+
+    const sendEmail = (email) => {
+
+        const serviceId = 'service_foa1k3l';
+        const templateId = 'template_nlofeon';
+        const publicKey = 'e2REVMSdT78Ytt45v';
+
+        const templateparams = {
+            to_email:email,
+            user_name:user.name,
+            user_email:user.email,
+            message:`I hope this message finds you well. I'm reaching out to let you know that I'm ready and willing to donate blood if needed. Please don't hesitate to reach out if you require assistance.Here is my number ${user.phonenumber}.`
+        }
+    
+        emailjs.send(serviceId, templateId, templateparams,publicKey)
+        .then((resultat) => {
+            console.log(resultat);
+            Swal.fire("E-mail envoyé avec succès");
+            })
+        .catch(error => {
+            console.log('FAILED...', error);
+        });
+        
+      };
 
     list = bloodtype == "A+" && bloodtype!=="Groupe sanguin"  ? list.filter((p) => p.bloodtype == "A+" || p.bloodtype == "AB+" ) :list;
 
@@ -77,7 +106,7 @@ const BloodDemands = () => {
             <p className="text-center text-4xl">Groupes sanguins auxquels vous pouvez donner</p><br />
             <div className="filter">
             bloodtype:<select title="test" value={bloodtype} className="groupe" onChange={(e)=>setbloodtype(e.target.value)}>
-                        <option value="Groupe sanguin">None</option>
+                        <option value="Groupe sanguin">All</option>
                         <option value="A+">A+</option>
                         <option value="A-">A-</option>
                         <option value="B+">B+</option>
@@ -88,12 +117,12 @@ const BloodDemands = () => {
                         <option value="AB-">AB-</option>
                     </select>
                     sexe:<select className="groupe" value={sexe} onChange={(e)=>setsexe(e.target.value)}>
-                        <option value="sexe">None</option>
+                        <option value="sexe">All</option>
                         <option value="Homme">Homme</option>
                         <option value="Femme">Femme</option>
                     </select>
                     ville:<select className="ville" value={ville} onChange={(e)=>setville(e.target.value)}>
-                        <option value="Ville">None</option>
+                        <option value="Ville">All</option>
                         <option value="Meknes">Meknes</option>
                         <option value="Rabat">Rabat</option>
                     </select>
@@ -115,6 +144,7 @@ const BloodDemands = () => {
                                 <p>Sexe : <span className="villespan">{a.sexe}</span></p>
                                 <p>Téléphone : <span className="villespan">{a.phonenumber}</span></p>
                                 <p>Description : <span className="villespan">{a.description}</span></p>
+                                {user.email !== a.email&& <button onClick={()=>sendEmail(a.email)}>Envoyer un email</button>}
                             </div>
                         </div>
 {/*                         {bloodtype !== a.bloodtype ? <span>can give to</span>:"" }

@@ -1,29 +1,82 @@
-import { Link } from "react-router-dom"
+import { Link, Navigate, useNavigate } from "react-router-dom"
 import useAuthContext from "../context/AuthContext"
 import './registre.css'
-import { useState } from "react"
-export function Registre() {
+import { useState,useEffect } from "react"
+import emailjs from '@emailjs/browser';
 
-    const [bloodtype,setbloodtype] = useState("")
-    const [city,setcity] = useState("")
-    const [phonenumber,setphonenumber] = useState("")
-    const [email,setemail] = useState("")
-    const [password,setpassword] = useState("")
-    const [password_confirmation,setpassword_confirmation] = useState("")
+export function Registre(props) {
+
+    const bloodtype = props.bloodtype
+    const setbloodtype = props.setbloodtype
+    const city = props.city
+    const setcity = props.setcity
+    const phonenumber = props.phonenumber
+    const setphonenumber = props.setphonenumber
+    const email = props.email
+    const setemail = props.setemail
+    const password = props.password
+    const setpassword = props.setpassword
+    const password_confirmation = props.password_confirmation
+    const setpassword_confirmation = props.setpassword_confirmation
+
+
+
+    const [randomNumber, setRandomNumber] = useState('');
+    const [confirmcode, setconfirmcode] = useState('');
+    const [verifyemail,setverifyemail] = useState(false);
     const {register,registererrors} = useAuthContext()
 
+    const navigate = useNavigate()
 
 
-    const handlergister = async(event)=>{
+
+    useEffect(()=>{
+        const generateRandomNumber = () => {
+            const min = 100000; // minimum 6-digit number
+            const max = 999999; // maximum 6-digit number
+            const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+            setRandomNumber(randomNum.toString());
+          };
+          generateRandomNumber()
+      },[])
+
+
+    const sendEmail = () => {
+        const serviceId = 'service_z26dqrz';
+        const templateId = 'template_d44v00v';
+        const publicKey = 'wKQk4VEDkOuPumdkz';
+
+        const templateparams = {
+            to_email:email,
+            message:`verify your email,${randomNumber}`
+        }
+        if(email){
+        emailjs.send(serviceId, templateId, templateparams,publicKey)
+        .then((resultat) => {
+            console.log(resultat);
+            alert('code gone')
+            setgotocodesec(true)
+            })
+        .catch(error => {
+            console.log('FAILED...', error);
+        });
+    }
+      };
+
+      const handleregister = async(event)=>{
         event.preventDefault();
         register({bloodtype,city,phonenumber,email,password,password_confirmation})
+/*         navigate("/verify_email") */
 
-    }
 
+
+/*      
+           navigate("/verify_email")
+ */    }
     return (
 
         <div className="register_form">
-            <form onSubmit={handlergister}>
+            <form onSubmit={handleregister}>
                 <label htmlFor="">Groupe sanguin</label> <br />
                 <select className="groupe" value={bloodtype} onChange={(e)=>setbloodtype(e.target.value)}>
                     <option value="Groupe sanguin">Groupe sanguin</option>

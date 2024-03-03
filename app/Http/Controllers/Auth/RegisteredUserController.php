@@ -105,4 +105,32 @@ class RegisteredUserController extends Controller
 
         return response()->json(200);
     }
+
+    /**
+ * Update the password for the specified user based on email.
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @return \Illuminate\Http\Response
+ */
+public function updatePasswordByEmail(Request $request): Response
+{
+    $request->validate([
+        'email' => ['required', 'string', 'email', 'max:255', 'exists:users'],
+        'password' => ['required', 'confirmed', Rules\Password::defaults()],
+    ]);
+
+    $user = User::where('email', $request->email)->first(); // Find user by email
+
+    // Check if the user exists
+    if (!$user) {
+        return response()->json(['message' => 'User not found.'], 404);
+    }
+
+    // Update the password
+    $user->password = Hash::make($request->password);
+    $user->save();
+
+    return response()->noContent();
+}
+
 }
